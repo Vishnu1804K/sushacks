@@ -28,7 +28,7 @@
 }
 .phone-container {
   position: relative; /* Make the container position relative */
-  width: 1000px; /* Adjust width as needed */
+  width: 80vw; /* Adjust width as needed */
   height: 450px; /* Adjust height as needed */
   background-color: beige;
   border-radius: 20px;

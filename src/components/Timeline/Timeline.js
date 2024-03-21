@@ -1,4 +1,4 @@
-import { React, useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
@@ -7,62 +7,28 @@ import img1 from "./assets/img_1.png";
 import img2 from "./assets/img_2.png";
 
 const Timeline = () => {
-  const [currentSlide, setCurrentSlide] = useState(0);
+  const [currentSlide, setCurrentSlide] = useState(1);
+  const [pro, setProg] = useState(1);
+
   const responsive = {
-    superLargeDesktop: {
-      breakpoint: { max: 4000, min: 3000 },
-      items: 5,
-    },
-    desktop: {
-      breakpoint: { max: 3000, min: 1024 },
-      items: 3,
-    },
-    tablet: {
-      breakpoint: { max: 1024, min: 464 },
-      items: 2,
-    },
-    mobile: {
-      breakpoint: { max: 464, min: 0 },
-      items: 1,
-    },
+    superLargeDesktop: { breakpoint: { max: 4000, min: 3000 }, items: 5 },
+    desktop: { breakpoint: { max: 3000, min: 1024 }, items: 3 },
+    tablet: { breakpoint: { max: 1024, min: 464 }, items: 2 },
+    mobile: { breakpoint: { max: 464, min: 0 }, items: 1 },
   };
 
+  useEffect(() => {
+    console.log(pro);
+  }, [pro]); 
+
   const timelineItems = [
-    {
-      title: "Resgistration Begins",
-      date: "20-03-24",
-      image: img1,
-    },
-    {
-      title: "Registration Ends",
-      date: "20-03-24",
-      image: img2,
-    },
-    {
-      title: "Hacking Starts",
-      date: "20-03-24",
-      image: img1,
-    },
-    {
-      title: "Hacking Ends",
-      date: "20-03-24",
-      image: img2,
-    },
-    {
-      title: "Hacking Ends",
-      date: "20-03-24",
-      image: img1,
-    },
-    {
-      title: "Hacking Ends",
-      date: "20-03-24",
-      image: img2,
-    },
-    {
-      title: "Hacking Ends",
-      date: "20-03-24",
-      image: img1,
-    },
+    { title: "Registration Begins", date: "20-03-24", image: img1 },
+    { title: "Registration Ends", date: "20-03-24", image: img2 },
+    { title: "Hacking Starts", date: "20-03-24", image: img1 },
+    { title: "Hacking Ends", date: "20-03-24", image: img2 },
+    { title: "Hacking Ends", date: "20-03-24", image: img1 },
+    { title: "Hacking Ends", date: "20-03-24", image: img2 },
+    { title: "Hacking Ends", date: "20-03-24", image: img1 },
   ];
 
   const progressBar = (
@@ -97,7 +63,10 @@ const Timeline = () => {
                     responsive={responsive}
                     infinite={false}
                     className="timeline-slider"
-                    afterChange={(nextSlide) => setCurrentSlide(nextSlide)}
+                    onChange={(nextSlide) => {
+                      setCurrentSlide(nextSlide);
+                      setProg(nextSlide); 
+                    }}
                   >
                     {timelineItems.map((item, index) => (
                       <div key={index} className="item">
